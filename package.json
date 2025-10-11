@@ -6,9 +6,10 @@
   "type": "module",
   "license": "ISC",
   "scripts": {
-    "env": "node scripts/generate-env.mjs ./.env src/env.ts.in src/env.ts",
+    "env": "node scripts/generate-env.mjs",
     "prebuild": "node scripts/prebuild.mjs",
-    "build": "node scripts/esbuild.mjs",
+    "manifest": "node scripts/sync-manifest.mjs",
+    "build": "npm run manifest && node scripts/esbuild.mjs",
     "push": "npm run prebuild && npm run build && npx clasp push"
   },
   "devDependencies": {

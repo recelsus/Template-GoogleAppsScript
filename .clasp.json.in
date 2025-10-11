@@ -1,4 +1,0 @@
-{
-  "scriptId":"${GAS_SCRIPT_ID}",
-  "rootDir":"./dist"
-}
