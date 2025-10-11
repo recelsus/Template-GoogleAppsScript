@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+/dist/
+/coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# clasp configuration generated from template
+/.clasp.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# Editor and OS artefacts
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Temporary directories
+.tmp/
+tmp/

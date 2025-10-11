@@ -1,0 +1,22 @@
+{
+  "name": "Template-GoogleAppsScript",
+  "description": "This is a template project for Google Apps Script using TypeScript and esbuild.",
+  "version": "1.0.0",
+  "author": "recelsus",
+  "type": "module",
+  "license": "ISC",
+  "scripts": {
+    "env": "node scripts/generate-env.mjs ./.env src/env.ts.in src/env.ts",
+    "prebuild": "node scripts/prebuild.mjs",
+    "build": "node scripts/esbuild.mjs",
+    "push": "npm run prebuild && npm run build && npx clasp push"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "@google/clasp": "^3.0.4-alpha",
+    "@types/google-apps-script": "^1.0.97",
+    "esbuild": "^0.25.4",
+    "esbuild-gas-plugin": "^0.6.0",
+    "typescript": "^5.8.3"
+  }
+}
