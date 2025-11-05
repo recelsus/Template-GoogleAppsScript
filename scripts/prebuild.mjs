@@ -52,11 +52,11 @@ if (script_id === undefined) {
   process.exit(1);
 }
 
-const clasp_config = { scriptId: script_id };
-const root_dir_value = read_env_value("CLASP_ROOT_DIR", env_values);
-if (root_dir_value !== undefined) {
-  clasp_config.rootDir = root_dir_value;
-}
+const clasp_config = {
+  scriptId: script_id,
+  // Default to dist so clasp config always aligns with build output
+  rootDir: resolve_root_dir(read_env_value("CLASP_ROOT_DIR", env_values)),
+};
 const project_id_value = read_env_value("CLASP_PROJECT_ID", env_values);
 if (project_id_value !== undefined) {
   clasp_config.projectId = project_id_value;
@@ -76,6 +76,12 @@ function resolve_env_path(raw_path, base_dir) {
   const expanded = expand_home(candidate);
   if (path.isAbsolute(expanded)) return expanded;
   return path.resolve(base_dir, expanded);
+}
+
+function resolve_root_dir(raw_value) {
+  const candidate = normalise_path_token(raw_value ?? "");
+  if (candidate) return candidate;
+  return "dist";
 }
 
 function read_env_value(key, env_store) {
